@@ -31,7 +31,7 @@ namespace DeathMarkFix
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "OakPrime";
         public const string PluginName = "HuntressBuff";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "1.0.0";
 
         private readonly Dictionary<string, string> DefaultLanguage = new Dictionary<string, string>();
 
@@ -45,17 +45,17 @@ namespace DeathMarkFix
                     EntityStates.Huntress.HuntressWeapon.ThrowGlaive.damageCoefficientPerBounce = 1.2f;
                     EntityStates.Huntress.HuntressWeapon.ThrowGlaive.glaiveProcCoefficient = 1.0f;
                 };
+                ReplaceSecondaryText();
             }
             catch (Exception e)
             {
                 Logger.LogError(e.Message + " - " + e.StackTrace);
             };
         }
-        private void ReplaceDeathMarkText()
+        private void ReplaceSecondaryText()
         {
-            this.ReplaceString("ITEM_DEATHMARK_PICKUP", "Enemies with 3 or more debuffs are marked for death, taking bonus damage.");
-            this.ReplaceString("ITEM_DEATHMARK_DESC", "Enemies with <style=cIsDamage>3</style> or more debuffs are <style=cIsDamage>marked for death</style>" +
-                ", increasing damage taken by <style=cIsDamage>35%</style> from all sources for <style=cIsUtility>7</style> <style=cStack>(+7 per stack)</style> seconds.");
+            this.ReplaceString("HUNTRESS_SECONDARY_DESCRIPTION", "Throw a seeking glaive that bounces up to <style=cIsDamage>6</style> times for <style=cIsDamage>250% damage</style>" +
+                ". Damage increases by <style=cIsDamage>20%</style> per bounce.");
         }
 
         private void ReplaceString(string token, string newText)
