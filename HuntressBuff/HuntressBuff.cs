@@ -10,6 +10,10 @@ using UnityEngine;
 using EntityStates;
 using IL.EntityStates.Huntress.HuntressWeapon;
 using EntityStates.Huntress.HuntressWeapon;
+using IL.RoR2.Projectile;
+using RoR2.Projectile;
+using On.RoR2.Projectile;
+using ProjectileDotZone = RoR2.Projectile.ProjectileDotZone;
 
 namespace DeathMarkFix
 {
@@ -31,7 +35,7 @@ namespace DeathMarkFix
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "OakPrime";
         public const string PluginName = "HuntressBuff";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.1.0";
 
         private readonly Dictionary<string, string> DefaultLanguage = new Dictionary<string, string>();
 
@@ -42,8 +46,11 @@ namespace DeathMarkFix
             {
                 RoR2.RoR2Application.onLoad += () =>
                 {
-                    EntityStates.Huntress.HuntressWeapon.ThrowGlaive.damageCoefficientPerBounce = 1.2f;
+                    EntityStates.Huntress.HuntressWeapon.ThrowGlaive.damageCoefficientPerBounce = 1.15f;
                     EntityStates.Huntress.HuntressWeapon.ThrowGlaive.glaiveProcCoefficient = 1.0f;
+                    EntityStates.Huntress.ArrowRain.arrowRainRadius *= 1.3f;
+                    EntityStates.Huntress.ArrowRain.projectilePrefab.GetComponent<ProjectileDotZone>().transform.localScale *= 1.3f;
+                    EntityStates.Huntress.ArrowRain.projectilePrefab.GetComponent<ProjectileDotZone>().overlapProcCoefficient = 0.3f;
                 };
                 ReplaceSecondaryText();
             }
@@ -55,7 +62,7 @@ namespace DeathMarkFix
         private void ReplaceSecondaryText()
         {
             this.ReplaceString("HUNTRESS_SECONDARY_DESCRIPTION", "Throw a seeking glaive that bounces up to <style=cIsDamage>6</style> times for <style=cIsDamage>250% damage</style>" +
-                ". Damage increases by <style=cIsDamage>20%</style> per bounce.");
+                ". Damage increases by <style=cIsDamage>15%</style> per bounce.");
         }
 
         private void ReplaceString(string token, string newText)
