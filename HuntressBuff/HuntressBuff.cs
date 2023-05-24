@@ -1,24 +1,12 @@
 using BepInEx;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
 using RoR2;
 using System;
 using R2API;
-using R2API.Utils;
 using System.Collections.Generic;
-using UnityEngine;
-using EntityStates;
-using IL.EntityStates.Huntress.HuntressWeapon;
-using EntityStates.Huntress.HuntressWeapon;
-using IL.RoR2.Projectile;
-using RoR2.Projectile;
-using On.RoR2.Projectile;
 using ProjectileDotZone = RoR2.Projectile.ProjectileDotZone;
 
-namespace DeathMarkFix
+namespace HuntressBuff
 {
-    //Loads R2API Submodules
-    [R2APISubmoduleDependency(nameof(LanguageAPI))]
 
     //This is an example plugin that can be put in BepInEx/plugins/ExamplePlugin/ExamplePlugin.dll to test out.
     //It's a small plugin that adds a relatively simple item to the game, and gives you that item whenever you press F2.
@@ -35,7 +23,7 @@ namespace DeathMarkFix
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "OakPrime";
         public const string PluginName = "HuntressBuff";
-        public const string PluginVersion = "1.1.0";
+        public const string PluginVersion = "1.1.1";
 
         private readonly Dictionary<string, string> DefaultLanguage = new Dictionary<string, string>();
 
