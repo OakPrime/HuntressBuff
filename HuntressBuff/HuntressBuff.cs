@@ -23,7 +23,7 @@ namespace HuntressBuff
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "OakPrime";
         public const string PluginName = "HuntressBuff";
-        public const string PluginVersion = "1.1.1";
+        public const string PluginVersion = "1.1.3";
 
         private readonly Dictionary<string, string> DefaultLanguage = new Dictionary<string, string>();
 
